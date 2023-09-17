@@ -35,6 +35,11 @@
                 <a href="inscription.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Inscription</a>
                 <a href="connexion.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Connexion</a>
                 <a href="profil.php" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Profil</a>
+                <?php
+                if ($_SESSION['login'] == "admiN1337$") {
+                    echo "<a href='admin.php' class='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>Admin</a>";
+                }
+                ?>
             </div>
             </div>
         </div>
@@ -49,6 +54,11 @@
         <a href="inscription.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Inscription</a>
         <a href="connexion.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Connexion</a>
         <a href="profil.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Profil</a>
+        <?php
+        if ($_SESSION['login'] == "admiN1337$") {
+            echo "<a href='admin.php' class='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>Admin</a>";
+        }
+        ?>
         </div>
     </div>
 </nav>
