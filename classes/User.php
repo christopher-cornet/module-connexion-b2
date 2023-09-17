@@ -115,9 +115,51 @@ class User {
     }
 
     // Change and update the User's informations
-    public function editProfile($login) {
+    public function editProfile($username, $firstname, $lastname, $password) {
+
+        // Hash the new password
+        $hashedPassword = hash("sha256", $password);
+            
+        $query = $this->pdo->db->prepare( "UPDATE user SET login = ?, firstname = ?, lastname = ?, password = ? WHERE login = ?" );
+        $query->execute( [$username, $firstname, $lastname, $hashedPassword, $_SESSION['login']] );
+
+        // Check if the query affected any row
+        if ($query->rowCount() > 0) {
+
+            // Update the session values
+            $_SESSION["login"] = $username;
+            $_SESSION["firstname"] = $firstname;
+            $_SESSION["lastname"] = $lastname;
+
+            return true;
+        }
+        else {
+            return false;
+        }
     
     }
+
+    // Delete the User's Account
+    public function deleteAccount() {
+
+        $query = $this->pdo->db->prepare( "UPDATE user SET login = ?, firstname = ?, lastname = ?, password = ? WHERE login = ?" );
+        $query->execute( [$username, $firstname, $lastname, $hashedPassword, $_SESSION['login']] );
+
+        if ($query->rowCount() > 0) {
+
+            // Update the session values
+            $_SESSION["login"] = $username;
+            $_SESSION["firstname"] = $firstname;
+            $_SESSION["lastname"] = $lastname;
+
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }
 
 ?>
