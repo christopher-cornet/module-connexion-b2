@@ -39,6 +39,13 @@
                 if ($_SESSION['login'] == "admiN1337$") {
                     echo "<a href='admin.php' class='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>Admin</a>";
                 }
+
+                if ($_SESSION['login']) {
+                    echo
+                    "<a href='logout.php'><button class='bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded'>
+                        Déconnecter
+                    </button>";
+                }
                 ?>
             </div>
             </div>
@@ -57,6 +64,13 @@
         <?php
         if ($_SESSION['login'] == "admiN1337$") {
             echo "<a href='admin.php' class='text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>Admin</a>";
+        }
+
+        if ($_SESSION['login']) {
+            echo
+            "<a href='logout.php'><button class='bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded'>
+                Déconnecter
+            </button>";
         }
         ?>
         </div>

@@ -1,0 +1,31 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 24rem;
+    padding: 5%;
+    border-radius: 10px;
+}
+
+form input {
+    text-align: center;
+}
+
+main {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 15vh;
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+}
+
+h3 {
+    margin-top: 10px;
+    text-align: center;
+    color: #ffe241;
+}

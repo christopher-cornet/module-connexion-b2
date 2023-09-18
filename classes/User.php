@@ -142,15 +142,12 @@ class User {
     // Delete the User's Account
     public function deleteAccount() {
 
-        $query = $this->pdo->db->prepare( "UPDATE user SET login = ?, firstname = ?, lastname = ?, password = ? WHERE login = ?" );
-        $query->execute( [$username, $firstname, $lastname, $hashedPassword, $_SESSION['login']] );
+        $query = $this->pdo->db->prepare( "DELETE FROM user WHERE login = ?" );
+        $query->execute( [$_SESSION['login']] );
 
         if ($query->rowCount() > 0) {
 
-            // Update the session values
-            $_SESSION["login"] = $username;
-            $_SESSION["firstname"] = $firstname;
-            $_SESSION["lastname"] = $lastname;
+            session_destroy();
 
             return true;
         }
@@ -160,6 +157,43 @@ class User {
 
     }
 
+    // Show database in admin panel table
+    public function showDatabase() {
+        
+        // Select all the users from the Database
+        $query = "SELECT id, login, firstname, lastname, password FROM user";
+        $result = $this->pdo->db->query($query);
+
+        // If there are more than 0 rows
+        if ($result->rowCount() > 0) {
+
+            $i = 0;
+
+            // Display the users in a table
+            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                // If the row is even, display a white background, else display a gray background
+                if ($i % 2 == 0) {
+                    echo "<tr class='bg-white border-b dark:bg-gray-900 dark:border-gray-700'>";
+                }
+                else {
+                    echo "<tr class='border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700'>";
+                }
+
+                echo "<th scope='row' class='px-6 py-4 text-center font-medium text-gray-900 whitespace-nowrap dark:text-white'>";
+                echo $row["id"];
+                echo "</th>";
+                echo "<td class='px-6 py-4 text-center'>" . $row["login"] . "</td>";
+                echo "<td class='px-6 py-4 text-center'>" . $row["firstname"] . "</td>";
+                echo "<td class='px-6 py-4 text-center'>" . $row["lastname"] . "</td>";
+                echo "<td class='px-6 py-4 text-center'>" . $row["password"] . "</td>";
+                echo "</tr>";
+
+                $i++;
+
+            }
+        }
+    }
 }
 
 ?>

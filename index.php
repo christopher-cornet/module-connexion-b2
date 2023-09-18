@@ -3,10 +3,6 @@ session_start();
 
 error_reporting(0);
 
-if (!empty($_SESSION['username'])) {
-    $name = $_SESSION['username']; 
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +16,6 @@ if (!empty($_SESSION['username'])) {
 <body>
     <?php include "includes/home-header.php"; ?>
         
-    <!-- <h2><?php if ($_SESSION['username'] == true) {echo $name;} else {echo "Anonyme";} ?></h2> -->
-    <h1>Bienvenue <?php if ($_SESSION['username'] == false) {echo "utilisateur Anonyme"; } else {echo $name;}?> !</h1>
+    <h1>Bienvenue <?php if ($_SESSION['login']) {echo $_SESSION['login'];} else {echo "utilisateur Anonyme";}?> !</h1>
 </body>
 </html>
