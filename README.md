@@ -25,3 +25,7 @@ Create a database named module_connexion_b2 and import the module_connexion_b2.s
 <br />
 
 Run your web server and access the project from your browser (e.g. http://localhost/module-connexion-b2/index.php).
+
+## Screenshots
+![image](https://github.com/christopher-cornet/module-connexion-b2/assets/115154379/cecf47a4-ae70-4fe1-9c1a-bdec56461d2b)
+![image](https://github.com/christopher-cornet/module-connexion-b2/assets/115154379/735ec361-1692-4949-ba3c-a1680db32e28)
